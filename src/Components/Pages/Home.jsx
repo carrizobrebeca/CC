@@ -1,7 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "./Modal";
 import flower from "./../../assets/poppy.png";
+import Symptoms from "./Symptoms";
 const Home = () => {
+
+const navigate = useNavigate();
+
+
+  const [activeTab, setActiveTab] = useState("home");
+    const [activeModal, setActiveModal] = useState(false);
+    const [activeSymptoms, setActiveSymptoms] = useState(false);
+  const seccionRef = useRef(null);
+
+  const irASeccion = () => {
+    seccionRef.current.scrollIntoView({
+      behavior: 'smooth', // hace el scroll suave
+      block: 'start'      // alinea al inicio de la sección
+    });
+  };
+
+  const [selectedMonth, setSelectedMonth] = useState("");
+
+  const optionsArray = [
+
+    { value: 'A-Z', label: 'A-Z' },
+    { value: 'Z-A', label: 'Z-A' },
+    { value: 'Mayor Precio', label: 'Mayor Precio' },
+    { value: 'Menor Precio', label: 'Menor Precio' },
+
+
+  ];
+
   return (
     <div>
       <header>
@@ -60,6 +90,10 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <button className='p-2 border-2 border-emerald-500 rounded-xl text-emerald-500 m-2 font-bold' onClick={() => setActiveModal(true)}>Cargar Humor</button>
+        <button className='p-2 border-2 border-emerald-500 rounded-xl text-emerald-500 m-2 font-bold' onClick={() => setActiveSymptoms(true)}>Cargar Sintomas</button>
+        {activeModal && <Modal onClose={() => setActiveModal(false)}/>}
+           {activeSymptoms && <Symptoms onClose={() => setActiveSymptoms(false)}/>}
       </main>
     </div>
   );
