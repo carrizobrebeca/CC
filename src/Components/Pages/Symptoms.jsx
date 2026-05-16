@@ -16,7 +16,7 @@ const Symptoms = ({ onClose }) => {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="size-6 text-red-600"
+                  class="size-6 text-neon-rose"
                 >
                   <path
                     stroke-linecap="round"
@@ -73,14 +73,14 @@ const Symptoms = ({ onClose }) => {
               <div className="flex justify-around items-center">
                 <button
                   onClick={onClose}
-                  className="bg-red-400 p-2 text-white rounded-xl shadow-md"
+                  className="bg-neon-rose p-2 text-white rounded-xl shadow-md"
                 >
                   Cerrar
                 </button>
 
                 <button
                   onClick={onClose}
-                  className="bg-red-400 p-2 text-white rounded-xl shadow-md"
+                  className="bg-neon-rose p-2 text-white rounded-xl shadow-md"
                 >
                   Guardar
                 </button>

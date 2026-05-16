@@ -17,11 +17,11 @@ const Landing = () => {
     <div>
       <header className="App-header">
         <div className="relative inline-block">
-          <img src={flower} alt="flower" />
+          <img src='https://png.pngtree.com/png-clipart/20231016/original/pngtree-sakura-cherry-blossom-flower-png-image_13325006.png' alt="flower" className="aspect-square h-[350px]"/>
 
           <div className="absolute inset-0 flex justify-center items-center">
-            <div className="p-10 aspect-square rounded-full flex justify-center items-center border-8 border-red-700 bg-white/40 backdrop-blur-sm">
-              <div className="text-red-700 text-lg font-bold">Cicle Care</div>
+            <div className="p-10 aspect-square rounded-full flex justify-center items-center border-8 border-neon-rose bg-white/40 backdrop-blur-sm">
+              <div className="text-neon-rose text-lg font-bold">Cycle Care</div>
             </div>
           </div>
         </div>

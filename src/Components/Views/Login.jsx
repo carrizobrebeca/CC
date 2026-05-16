@@ -9,22 +9,22 @@ const Login = () => {
     <div>
       <header className="App-header">
         <div className="relative inline-block">
-          <img src={flower} alt="flower" />
+                    <img src='https://png.pngtree.com/png-clipart/20231016/original/pngtree-sakura-cherry-blossom-flower-png-image_13325006.png' alt="flower" className="aspect-square h-[450px]"/>
 
           <div className="absolute inset-0 flex justify-center items-center m-20">
-            <div className="p-10 border-8 border-red-700 bg-white/40 backdrop-blur-sm rounded-lg ">
-              <div className="text-red-700 text-lg font-bold  text-sm">
+            <div className="p-10 border-8 border-neon-rose bg-white/40 backdrop-blur-sm rounded-lg ">
+              <div className="text-neon-rose text-lg font-bold  text-sm">
                 <label htmlFor="" className="pb-2">Usuario</label>
                 <input  type="text" />
                 <label htmlFor="" className="pb-2 pt-2">Contraseña</label><input type="text" />
                 <div className="flex justify-center items-center pb-2 pt-2">
- <button onClick={() => navigate("/home")} className=" p-2 border-2 border-red-700 rounded-full ">Ingresar</button>
+ <button onClick={() => navigate("/home")} className=" p-2 border-2 border-neon-rose rounded-full ">Ingresar</button>
                 </div>
                 <div className="flex justify-center items-center pt-2 text-xs">
  <p>No tenes cuenta ?</p>
                 </div>
                <div className="flex justify-center items-center ">
- <button onClick={() => navigate("/register")} className=" p-2 border-2 border-red-700 rounded-full ">Registrate</button>
+ <button onClick={() => navigate("/register")} className=" p-2 border-2 border-neon-rose rounded-full ">Registrate</button>
                 </div>
               </div>
             </div>

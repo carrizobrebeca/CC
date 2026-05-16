@@ -17,7 +17,7 @@ const Modal = ({ onClose }) => {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="size-6 text-red-600"
+                  class="size-6 text-neon-rose"
                 >
                   <path
                     stroke-linecap="round"
