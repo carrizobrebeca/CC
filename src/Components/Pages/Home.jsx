@@ -8,53 +8,76 @@ import Cycle from "./Cycle";
 import { DateRangePicker } from "react-date-range";
 import style from "./dates.module.css";
 import { es } from "date-fns/locale";
-import { format } from "date-fns";
+import { format, addDays } from "date-fns";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
 const Home = () => {
-
-const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState("home");
-    const [activeModal, setActiveModal] = useState(false);
-    const [activeSymptoms, setActiveSymptoms] = useState(false);
-    const [activeCycle, setActiveCycle] = useState(false);
+  const [activeModal, setActiveModal] = useState(false);
+  const [activeSymptoms, setActiveSymptoms] = useState(false);
+  const [activeCycle, setActiveCycle] = useState(false);
   const seccionRef = useRef(null);
 
   const irASeccion = () => {
     seccionRef.current.scrollIntoView({
-      behavior: 'smooth', // hace el scroll suave
-      block: 'start'      // alinea al inicio de la sección
+      behavior: "smooth", // hace el scroll suave
+      block: "start", // alinea al inicio de la sección
     });
   };
 
   const [selectedMonth, setSelectedMonth] = useState("");
 
   const optionsArray = [
-
-    { value: 'A-Z', label: 'A-Z' },
-    { value: 'Z-A', label: 'Z-A' },
-    { value: 'Mayor Precio', label: 'Mayor Precio' },
-    { value: 'Menor Precio', label: 'Menor Precio' },
-
-
+    { value: "A-Z", label: "A-Z" },
+    { value: "Z-A", label: "Z-A" },
+    { value: "Mayor Precio", label: "Mayor Precio" },
+    { value: "Menor Precio", label: "Menor Precio" },
   ];
 
-const [selectionRange, setSelectionRange] = useState({
-  startDate: new Date(),
-  endDate: new Date(),
-  key: "selection",
-});
+  // const [selectionRange, setSelectionRange] = useState({
+  //   startDate: new Date(),
+  //   endDate: new Date(),
+  //   key: "selection",
+  // });
 
-const handleSelect = (ranges) => {
-  setSelectionRange(ranges.selection);
+  // const handleSelect = (ranges) => {
+  //   setSelectionRange(ranges.selection);
 
-  console.log("Inicio:", ranges.selection.startDate);
-  console.log("Fin:", ranges.selection.endDate);
-};
+  //   console.log("Inicio:", ranges.selection.startDate);
+  //   console.log("Fin:", ranges.selection.endDate);
+  // };
+  const [ranges, setRanges] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 4),
+      key: "selection",
+    },
+    {
+      startDate: addDays(new Date(), 14),
+      endDate: addDays(new Date(), 18),
+      key: "second",
+    },
+  ]);
 
+  const handleSelect = (item) => {
+    const start = item.selection.startDate;
+
+    setRanges([
+      {
+        startDate: start,
+        endDate: addDays(start, 4),
+        key: "selection",
+      },
+      {
+        startDate: addDays(start, 14),
+        endDate: addDays(start, 18),
+        key: "second",
+      },
+    ]);
+  };
   return (
     <div>
       <header>
@@ -62,8 +85,11 @@ const handleSelect = (ranges) => {
           <div className="">
             <div className="flex justify-start items-center">
               <div className="rounded-full border-2 border-neon-rose flex justify-start aspect-square w-[60px] m-2">
-                                    <img src='https://png.pngtree.com/png-clipart/20231016/original/pngtree-sakura-cherry-blossom-flower-png-image_13325006.png' alt="flower" className="aspect-square h-[50px] pt-2 pl-2"/>
-
+                <img
+                  src="https://png.pngtree.com/png-clipart/20231016/original/pngtree-sakura-cherry-blossom-flower-png-image_13325006.png"
+                  alt="flower"
+                  className="aspect-square h-[50px] pt-2 pl-2"
+                />
               </div>
               <div>
                 <h2>Bienvenida!</h2>
@@ -90,7 +116,7 @@ const handleSelect = (ranges) => {
         </div>
       </header>
       <main className="w-full">
-        <div className="ml-6 mr-6 mt-2 mb-2">
+        {/* <div className="ml-6 mr-6 mt-2 mb-2">
           <div className="border-2 border-red-200 rounded-xl shadow-lg shadow-red-500/50  ">
             <div className="p-2 grid grid-cols-7 gap-4 items-center bg-red-200 text-withe rounded-tl-lg rounded-tr-lg">
               <h2 className="flex justify-center">Lun</h2>
@@ -113,35 +139,83 @@ const handleSelect = (ranges) => {
               <h2 className="flex justify-center rounded-full bg-red-300">03</h2>
             </div>
           </div>
-        </div>
-        <button className='p-2 border-2 border-emerald-500 rounded-xl text-emerald-500 m-2 font-bold' onClick={() => setActiveModal(true)}>Cargar Humor</button>
-        <button className='p-2 border-2 border-emerald-500 rounded-xl text-emerald-500 m-2 font-bold' onClick={() => setActiveSymptoms(true)}>Cargar Sintomas</button>
-        <button className='p-2 border-2 border-emerald-500 rounded-xl text-emerald-500 m-2 font-bold' onClick={() => setActiveCycle(true)}>Ciclo</button>
-       
-        {activeModal && <Modal onClose={() => setActiveModal(false)}/>}
-           {activeSymptoms && <Symptoms onClose={() => setActiveSymptoms(false)}/>}
-            {activeCycle && <Cycle onClose={() => setActiveCycle(false)}/>}
-            
-      </main>
-      <DateRangePicker
-      staticRanges={[]} 
-    inputRanges={[]}
-  className={style.dateRange}
-  ranges={[selectionRange]}
-   rangeColors={["#D92D6F", "#fed14c"]}
-  onChange={handleSelect}
-  minDate={new Date()}
-  locale={es}
-/>
+        </div> */}
+        <button
+          className="p-2 border-2 border-emerald-500 rounded-xl text-emerald-500 m-2 font-bold"
+          onClick={() => setActiveModal(true)}
+        >
+          Cargar Humor
+        </button>
+        <button
+          className="p-2 border-2 border-emerald-500 rounded-xl text-emerald-500 m-2 font-bold"
+          onClick={() => setActiveSymptoms(true)}
+        >
+          Cargar Sintomas
+        </button>
+        <button
+          className="p-2 border-2 border-emerald-500 rounded-xl text-emerald-500 m-2 font-bold"
+          onClick={() => setActiveCycle(true)}
+        >
+          Ciclo
+        </button>
 
+        {activeModal && <Modal onClose={() => setActiveModal(false)} />}
+        {activeSymptoms && (
+          <Symptoms onClose={() => setActiveSymptoms(false)} />
+        )}
+        {activeCycle && <Cycle onClose={() => setActiveCycle(false)} />}
+      </main>
+      <div className="flex-1">
+      <div className="ml-4 flex flex-1 flex-col">
+        <DateRangePicker
+          className="fixed left-[-200px]"
+          staticRanges={[]}
+          inputRanges={[]}
+          ranges={ranges}
+          onChange={handleSelect}
+          rangeColors={["#D92D6F", "#138a08"]}
+          minDate={new Date()}
+          locale={es}
+        />
+        <div className="bg-neon-rose"></div>
+        <div className="flex flex-row flex-1">
+          <div className="flex flex-col flex-1">
+               <div className="bg-neon-rose rounded-xl ">
+          <h1 className=" rounded-xl">Menstruación</h1>
+          <h2>Périodo Fértil</h2>
+          <h2>Ovulación</h2>
+        </div>
+               <div className="bg-neon-rose rounded-xl ">
+          <h1 className=" rounded-xl">Menstruación</h1>
+          <h2>Périodo Fértil</h2>
+          <h2>Ovulación</h2>
+        </div>
+          </div>
+          <div class="flex-1 ml-4 h-full">
+               <div className="bg-neon-rose rounded-xl ">
+          <h1 className=" rounded-xl">Menstruación</h1>
+          <h2>Périodo Fértil</h2>
+          <h2>Ovulación</h2>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div className="">
+        
+     
+      </div>
+
+      <div></div>
+      {/* 
 <p>
   Inicio: {format(selectionRange.startDate, "dd/MM/yyyy")}
 </p>
 
 <p>
   Fin: {format(selectionRange.endDate, "dd/MM/yyyy")}
-</p>
-
+</p> */}
     </div>
   );
 };
