@@ -5,6 +5,7 @@ import Landing from './Components/Views/Landing';
 import Login from './Components/Views/Login';
 import Home from './Components/Pages/Home';
 import Register from './Components/Views/Register';
+import SkinCare from './Components/Pages/SkinCare';
 
 function App() {
  return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/home" element={<Home />} />
-        
+        <Route path="/skincare" element={<SkinCare />} />
       </Routes>
     </Router>
   );
